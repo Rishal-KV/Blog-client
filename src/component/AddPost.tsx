@@ -38,7 +38,7 @@ const AddPost: React.FC<AddPostProps> = ({ setPost }) => {
         .post(data)
         .then((res) => {
           closeRef.current?.click()
-          setPost((prevState:Posts[])=>[...prevState,res.data.posted as Posts]);
+          setPost((prevState:Posts[])=>[res.data.posted as Posts,...prevState]);
         })
        ;
     },
