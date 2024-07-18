@@ -15,7 +15,7 @@ const AddPost: React.FC<AddPostProps> = ({ setPost }) => {
   },[])
   const userId = useSelector((state:User) => state.user?.user?._id)
 
-  
+  const closeRef = useRef<HTMLButtonElement>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const {
@@ -37,6 +37,7 @@ const AddPost: React.FC<AddPostProps> = ({ setPost }) => {
       userApi
         .post(data)
         .then((res) => {
+          closeRef.current?.click()
           setPost((prevState:Posts[])=>[...prevState,res.data.posted as Posts]);
         })
        ;
@@ -71,6 +72,7 @@ const AddPost: React.FC<AddPostProps> = ({ setPost }) => {
               Create New Post
             </h3>
             <button
+             ref={closeRef}
               type="button"
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
               data-modal-toggle="crud-modal"

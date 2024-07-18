@@ -58,14 +58,15 @@ const EditProfile: React.FC = () => {
 
         setUser(res.userUpdated);
         dispatch(userAuth({ user: res.userUpdated }));
+        setPreviewUrl('')
       });
     },
     enableReinitialize: true,
   });
+  console.log(errors, "users");
 
   return (
     <>
-    
       <Navbar />
       <div className="flex items-center justify-center">
         <main className="w-full min-h-screen  md:w-2/3 lg:w-3/4 flex justify-center">
@@ -136,8 +137,9 @@ const EditProfile: React.FC = () => {
                       <textarea
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        value={user?.about}
+                        value={values.about}
                         id="about"
+                        name="about"
                         rows={4}
                         className="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500 "
                         placeholder="Write your bio here..."

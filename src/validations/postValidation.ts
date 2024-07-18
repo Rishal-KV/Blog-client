@@ -7,7 +7,7 @@ const PostSchema = Yup.object().shape({
       .required('Title is required'),
     description: Yup.string()
       .min(20, 'Description is too short!')
-      .max(500, 'Description is too long!')
+      
       .required('Description is required'),
     image: Yup.mixed().required('Image is required'),
   });

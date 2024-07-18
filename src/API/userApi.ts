@@ -1,6 +1,23 @@
 import axiosInstance from "./axiosConfig";
 import { LoginData, Posts, Signup } from "../interface/user";
 
+axiosInstance.interceptors.request.use(
+  (config) => {
+    // Retrieve token from local storage
+    const token = localStorage.getItem("userToken");
+
+    // If a token exists, include it in the Authorization header
+    if (token) {
+      config.headers.Authorization = token;
+    }
+
+    return config;
+  },
+  (error) => {
+    // Handle the error
+    return Promise.reject(error);
+  }
+);
 export const userApi = {
   login: async (userData: LoginData) => {
     try {
@@ -78,14 +95,18 @@ export const userApi = {
       throw error;
     }
   },
-  updateProfile: async (userData: any,email:string) => {
+  updateProfile: async (userData: any, email: string) => {
     try {
+      console.log("ressss");
+      
       const formData = new FormData();
-      formData.append('name',userData.name)
-      formData.append('about',userData.about)
-      formData.append('image',userData.image)
-      formData.append('email',email)
+      formData.append("name", userData.name);
+      formData.append("about", userData.about);
+      formData.append("image", userData.image);
+      formData.append("email", email);
       const response = await axiosInstance.post("/profile", formData);
+     
+      
       return response.data;
     } catch (error) {
       throw error;
