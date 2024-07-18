@@ -16,7 +16,7 @@ const PostPage: React.FC = () => {
     <>
       <Navbar />
       <div className="grid md:grid-cols-3 bg-white min-h-screen">
-        {post.map((postData: Posts) => (
+        {post?.map((postData: Posts) => (
           <Post Posts={postData} />
         ))}
 
