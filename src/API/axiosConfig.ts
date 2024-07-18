@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL:"https://nutrix.fun/blogapp"
+    baseURL:"https://blogapp.nutrix.fun"
 })
 export default axiosInstance
