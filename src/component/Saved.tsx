@@ -10,7 +10,8 @@ const Saved : React.FC<any> = ({post}) => {
                 {post.title}
             </h3>
             <div className="prose prose-slate prose-sm text-slate-600">
-                <p>{post.description}</p>
+            <p>{post.description.length > 10 ? post.description.substring(0, 10) + '...' : post.description}</p>
+
             </div><p
             onClick={()=>navigate(`/article/${post._id}`)}
                 className="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 mt-6"
