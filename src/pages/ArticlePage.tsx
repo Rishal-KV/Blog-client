@@ -40,7 +40,7 @@ const ArticlePage: React.FC = () => {
 
           {/* Post Content */}
           <div className="prose prose-lg mb-8">
-            <p>{details?.description}</p>
+            <p className="text-base-100">{details?.description}</p>
 
             {/* Add more content as needed */}
           </div>
