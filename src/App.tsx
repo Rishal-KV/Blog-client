@@ -1,27 +1,20 @@
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignUp from './component/Signup';
-import Login from './component/Login';
-import PostPage from './pages/PostPage';
-import ArticlePage from './pages/ArticlePage';
-import SavedArticlePage from './pages/SavedArticlePage';
-import ProfilePage from './pages/ProfilePage';
-import EditProfile from './component/EditProfile';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import LandPage from "./Pages/LandPage"
+import PostPage from "./Pages/PostPage"
+import ArticlePage from "./Pages/ArticlePage"
 function App() {
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path='/register' element={<SignUp/>}/>
-        <Route path='/' element={<PostPage/>}/>
-        <Route path='/article/:id' element={<ArticlePage/>}/>
-        <Route path='/saved' element={<SavedArticlePage/>}/>
-        <Route path='/profile' element={<ProfilePage/>}/>
-        <Route path='/editprofile' element={<EditProfile/>}/>
-      </Routes> 
-    </Router>
-  );
+  <Router>
+    <Routes>
+      <Route path="/" element={<LandPage/>} />
+      <Route path="/feed" element={<PostPage/>}/>
+      <Route path="/post" element={<ArticlePage/>}/>
+
+    </Routes>
+  </Router>
+  )
 }
 
-export default App;
+export default App
